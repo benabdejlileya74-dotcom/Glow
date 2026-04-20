@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Store | Boutique d'Articles Sportifs</title>
+    <meta name="description" content="Boutique en ligne de produits sportifs de qualité. Vêtements, chaussures, équipements et accessoires sportifs aux meilleurs prix.">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+   <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo i {
+            color: #f3ebeb;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff6b35;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -15px;
+            background: #fafdf9;
+            color: rgb(2, 17, 87);
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+        }
+
+        /* Hero Section */
+     /*.hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)) url() ;
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }*/
+        .hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("tsawr/backround glow store.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background: #ce5d34;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: #ff5722;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 3rem 5%;
+            background: rgba(236, 213, 213, 0.904);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #1e3c72;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f1eeed;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(197, 112, 112, 0.1);
+        }
+
+        .category-card i {
+            font-size: 3rem;
+            color: #ff723f;
+            margin-bottom: 1rem;
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Products */
+        .products {
+            padding: 3rem 5%;
+            background: #f5f5f5;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff6b35;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #1e3c72;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            color: #ff6b35;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: #ff6b35;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            z-index: 1001;
+            transition: right 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            background: #1e3c72;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: #ff6b35;
+        }
+
+        .remove-item {
+            color: #ff4444;
+            cursor: pointer;
+        }
+
+        .cart-footer {
+            padding: 1rem;
+            border-top: 2px solid #eee;
+        }
+
+        .cart-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        /* Checkout Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 550px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* Delivery Options */
+        .delivery-options {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .delivery-option {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .delivery-option:hover {
+            border-color: #ff6b35;
+        }
+
+        .delivery-option.selected {
+            border-color: #ff6b35;
+            background: #fff3ef;
+        }
+
+        .delivery-option i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .delivery-option .whatsapp-icon {
+            color: #25D366;
+        }
+
+        .delivery-option .email-icon {
+            color: #ff6b35;
+        }
+
+        .delivery-option h4 {
+            margin: 0.5rem 0;
+        }
+
+        .delivery-option p {
+            font-size: 0.8rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .order-summary {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .order-summary h3 {
+            margin-bottom: 0.8rem;
+            color: #1e3c72;
+        }
+
+        .order-items {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.9rem;
+        }
+
+        .modal-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .btn-submit {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-cancel {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-submit:hover {
+            background: #ff5722;
+        }
+
+        .btn-cancel:hover {
+            background: #5a6268;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 3rem 5% 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff6b35;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ff6b35;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #2a5298;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 1rem;
+            }
+
+            .delivery-options {
+                flex-direction: column;
+            }
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1e3c72;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            z-index: 2001;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+         
+        <div class="header-container">
+            <div class="logo">
+                <i class="bi bi-bag-heart-fill"></i>
+                Glow Store
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#products">Produits</a></li>
+                    <li><a href="#categories">Catégories</a></li>
+
+
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Vêtements
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="Homme"> Homme</a></li>
+            <li><a class="dropdown-item" href="Femme">Femme</a></li>
+            <li><hr class="dropdown-divider"></li>
+           
+          </ul>
+        </li>
+
+
+
+
+
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Bienvenue chez Glow Store</h1>
+                <p>Les meilleurs produits  aux meilleurs prix</p>
+                <button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Acheter maintenant</button>
+            </div>
+        </section>
+
+        <section class="categories" id="categories">
+            <h2 class="section-title">Catégories</h2>
+            <div class="category-grid">
+                <div class="category-card" onclick="filterByCategory('Vêtements')">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Vêtements </h3>
+                    <p>Collection exclusive de vêtements</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('Chaussures')">
+                    <i class="fas fa-shoe-prints"></i>
+                    <h3>Chaussures </h3>
+                    <p>Confortables et durables</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('Équipement')">
+                    <i class="bi bi-brush-fill"></i>
+                    <h3>Produits Cosmetiques</h3>
+                    <p>produits</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('Accessoires')">
+                    <i class="fas fa-watch"></i>
+                    <h3>Accessoires</h3>
+                    <p>Accessoires essentiels pour le sport</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="products" id="products">
+            <h2 class="section-title">Produits Vedettes</h2>
+            <div class="product-grid" id="productGrid"></div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Glow Store</h3>
+                <p>La meilleure boutique d'articles sportifs</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/glow.store125"><i class="fab fa-instagram"></i></a>
+                    
+                    <a href="https://www.tiktok.com/@glow.store125?_r=1&_t=ZS-95hegl3LGVg"><i class="bi bi-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Liens Rapides</h3>
+                <ul>
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#products">Produits</a></li>
+                    <li><a href="#">Politique de retour</a></li>
+                    <li><a href="#">Livraison</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Coordonnées</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +216 26 061 991</li>
+                    <li><i class="fas fa-envelope"></i> benabdejlileya74@gmail.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> M'saken, Sousse</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Glow Store. Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float" onclick="openWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Panier</h3>
+            <i class="fas fa-times" style="cursor: pointer;" onclick="toggleCart()"></i>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                Total: <span id="cartTotal">0</span> TND
+            </div>
+            <button class="checkout-btn" onclick="openCheckoutModal()">Passer à la caisse</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-clipboard-list"></i> Finaliser la commande</h2>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Prénom *</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="Votre prénom">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-user-tag"></i> Nom *</label>
+                        <input type="text" id="lastName" name="lastName" required placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-phone"></i> Téléphone *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="XXXXXXXX" style="direction: ltr;">
+                        <small style="color: #666;">Entrez votre numéro avec l'indicatif (ex: 21612345678)</small>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="email" name="email" placeholder="exemple@email.com">
+                        <small style="color: #666;">Requis uniquement si vous choisissez l'envoi par email</small>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Adresse *</label>
+                        <textarea id="address" name="address" required placeholder="Votre adresse complète (rue, ville, code postal)"></textarea>
+                    </div>
+
+                    <!-- Delivery Options -->
+                    <div class="form-group">
+                        <label><i class="fas fa-paper-plane"></i> Choisissez la méthode d'envoi *</label>
+                        <div class="delivery-options">
+                            <div class="delivery-option" onclick="selectDeliveryMethod('whatsapp')" id="optionWhatsapp">
+                                <i class="fab fa-whatsapp whatsapp-icon"></i>
+                                <h4>WhatsApp</h4>
+                                <p>Envoyer la commande via WhatsApp</p>
+                            </div>
+                            <div class="delivery-option" onclick="selectDeliveryMethod('email')" id="optionEmail">
+                                <i class="fas fa-envelope email-icon"></i>
+                                <h4>Email</h4>
+                                <p>Envoyer la commande par email</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <h3><i class="fas fa-shopping-bag"></i> Récapitulatif de la commande</h3>
+                        <div class="order-items" id="orderItemsSummary"></div>
+                        <div style="border-top: 2px solid #ff6b35; padding-top: 0.8rem; margin-top: 0.5rem;">
+                            <strong>Total: <span id="orderTotalSummary" style="color: #ff6b35; font-size: 1.2rem;">0</span> TND</strong>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeCheckoutModal()">Annuler</button>
+                <button class="btn-submit" onclick="submitOrder()">Confirmer la commande</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Paramètres de la boutique
+        const STORE_SETTINGS = {
+            // Numéro WhatsApp du propriétaire (avec indicatif)
+            ownerWhatsApp: "216 25908089", // Remplacez par votre numéro réel
+            // Email du propriétaire
+            ownerEmail: "benabdejlileya74@gmail.com", // Remplacez par votre email réel
+            // Message de bienvenue
+            welcomeMessage: "Bienvenue chez Sport Store ! Merci de votre visite."
+        };
+
+        // Formspree endpoint (optionnel pour l'email)
+        const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqewdzgz";
+        
+        // Variable pour stocker la méthode d'envoi sélectionnée
+        let selectedDeliveryMethod = "whatsapp";
+        
+        // Produits
+        const products = [
+            {
+                id: 1,
+                name: "T-Shirt Sport",
+                category: "Vêtements",
+                price: 89,
+                oldPrice: 129,
+                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400",
+                badge: "Promo"
+            },
+            {
+                id: 2,
+                name: "Chaussures Sport",
+                category: "Chaussures",
+                price: 199,
+                oldPrice: 299,
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",
+                badge: "Offre Spéciale"
+            },
+            {
+                id: 3,
+                name: "Haltère 5kg",
+                category: "Équipement",
+                price: 149,
+                oldPrice: null,
+                image: "https://images.unsplash.com/photo-1586401100295-7a8096fd231a?w=400",
+                badge: "Meilleure vente"
+            },
+            {
+                id: 4,
+                name: "cappuche",
+                category: "Vêtements",
+                price: 100,
+                oldPrice: 150,
+                image: "tsawr/cap.jpg",
+                badge: "Promo"
+            },
+            {
+                id: 5,
+                name: "Short Sport",
+                category: "Vêtements",
+                price: 79,
+                oldPrice: 119,
+                image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400",
+                badge: null
+            },
+            {
+                id: 6,
+                name: "Chaussures Running",
+                category: "Chaussures",
+                price: 249,
+                oldPrice: 349,
+                image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400",
+                badge: "Offre Spéciale"
+            },
+            {
+                id: 7,
+                name: "Corde à Sauter",
+                category: "Équipement",
+                price: 39,
+                oldPrice: null,
+                image: "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=400",
+                badge: null
+            },
+            {
+                id: 8,
+                name: "Gourde Sport",
+                category: "Accessoires",
+                price: 49,
+                oldPrice: 79,
+                image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400",
+                badge: "Promo"
+            }
+        ];
+
+        let cart = [];
+        let currentCategory = "Tous";
+
+        // Choisir la méthode d'envoi
+        function selectDeliveryMethod(method) {
+            selectedDeliveryMethod = method;
+            
+            // Mettre à jour l'interface
+            document.getElementById('optionWhatsapp').classList.remove('selected');
+            document.getElementById('optionEmail').classList.remove('selected');
+            
+            if (method === 'whatsapp') {
+                document.getElementById('optionWhatsapp').classList.add('selected');
+                document.getElementById('email').removeAttribute('required');
+                document.getElementById('email').parentElement.style.opacity = '0.5';
+            } else {
+                document.getElementById('optionEmail').classList.add('selected');
+                document.getElementById('email').setAttribute('required', 'required');
+                document.getElementById('email').parentElement.style.opacity = '1';
+            }
+        }
+
+        // Afficher les produits
+        function displayProducts() {
+            const productGrid = document.getElementById('productGrid');
+            let filteredProducts = products;
+            
+            if (currentCategory !== "Tous") {
+                filteredProducts = products.filter(p => p.category === currentCategory);
+            }
+            
+            productGrid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                        ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-price">
+                            ${product.price} TND
+                            ${product.oldPrice ? `<span class="old-price">${product.oldPrice} TND</span>` : ''}
+                        </p>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})">
+                            <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Ajouter au panier
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({...product, quantity: 1});
+            }
+            
+            updateCart();
+            showNotification('Produit ajouté au panier !');
+        }
+
+        // Mettre à jour le panier
+        function updateCart() {
+            const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = cartCount;
+            
+            const cartItemsDiv = document.getElementById('cartItems');
+            const cartTotalSpan = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<p style="text-align: center; padding: 2rem;">Votre panier est vide</p>';
+                cartTotalSpan.textContent = '0';
+                return;
+            }
+            
+            cartItemsDiv.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div class="cart-item-price">${item.price} TND × ${item.quantity}</div>
+                    </div>
+                    <div class="remove-item" onclick="removeFromCart(${item.id})">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotalSpan.textContent = total;
+        }
+
+        // Supprimer du panier
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        // Filtrer par catégorie
+        function filterByCategory(category) {
+            currentCategory = category;
+            displayProducts();
+            document.getElementById('products').scrollIntoView({behavior: 'smooth'});
+        }
+
+        // Ouvrir/fermer le panier
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        // Ouvrir le modal de commande
+        function openCheckoutModal() {
+            if (cart.length === 0) {
+                showNotification('Votre panier est vide ! Ajoutez des produits d\'abord');
+                return;
+            }
+            
+            // Mettre à jour le récapitulatif
+            const orderItemsDiv = document.getElementById('orderItemsSummary');
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            orderItemsDiv.innerHTML = cart.map(item => `
+                <div class="order-item">
+                    <span>${item.name} × ${item.quantity}</span>
+                    <span>${item.price * item.quantity} TND</span>
+                </div>
+            `).join('');
+            
+            document.getElementById('orderTotalSummary').textContent = total;
+            
+            // Réinitialiser le formulaire
+            document.getElementById('checkoutForm').reset();
+            selectDeliveryMethod('whatsapp');
+            
+            // Afficher le modal
+            document.getElementById('checkoutModal').classList.add('active');
+        }
+
+        // Fermer le modal
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.remove('active');
+        }
+
+        // Envoyer un message WhatsApp
+        function sendWhatsAppMessage(phoneNumber, message) {
+            let cleanPhone = phoneNumber.replace(/[^0-9]/g, '');
+            
+            if (!cleanPhone.startsWith('216') && !cleanPhone.startsWith('213') && !cleanPhone.startsWith('212')) {
+                if (cleanPhone.startsWith('0')) {
+                    cleanPhone = '216' + cleanPhone.substring(1);
+                } else if (cleanPhone.length === 8) {
+                    cleanPhone = '216' + cleanPhone;
+                }
+            }
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Envoyer un email via Formspree
+        async function sendEmail(formData) {
+            if (FORMSPREE_ENDPOINT && FORMSPREE_ENDPOINT !== "https://formspree.io/f/YOUR_FORM_ID") {
+                try {
+                    const response = await fetch(FORMSPREE_ENDPOINT, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    return response.ok;
+                } catch (error) {
+                    console.error('Erreur email:', error);
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        // Soumettre la commande
+        async function submitOrder() {
+            // Récupérer les valeurs
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const address = document.getElementById('address').value.trim();
+            
+            // Validation
+            if (!firstName || !lastName || !phone || !address) {
+                showNotification('Veuillez remplir tous les champs obligatoires');
+                return;
+            }
+            
+            if (selectedDeliveryMethod === 'email' && !email) {
+                showNotification('Veuillez entrer votre email pour l\'envoi par email');
+                return;
+            }
+            
+            // Préparer les détails
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const orderItems = cart.map(item => `${item.name} (${item.quantity}) - ${item.price * item.quantity} TND`).join('\n');
+            const orderItemsHTML = cart.map(item => `• ${item.name} × ${item.quantity} = ${item.price * item.quantity} TND`).join('%0A');
+            
+            // Bouton de chargement
+            const submitBtn = document.querySelector('.btn-submit');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Envoi en cours...';
+            submitBtn.disabled = true;
+            
+            try {
+                let success = false;
+                
+                if (selectedDeliveryMethod === 'whatsapp') {
+                    // Message pour le client
+                    const customerMessage = `🛍️ *Bonjour ${firstName} ${lastName}*%0A%0AMerci d'avoir commandé chez *Sport Store* ! 🏋️‍♂️%0A%0A📋 *Détails de votre commande :*%0A${orderItemsHTML}%0A💰 *Total :* ${total} TND%0A📍 *Adresse :* ${address}%0A%0A✅ Votre commande a été reçue avec succès !%0ANous vous contacterons bientôt pour confirmer.%0A%0A*Sport Store - Merci de votre confiance* 💪`;
+                    
+                    // Message pour le propriétaire
+                    const ownerMessage = `🆕 *Nouvelle commande - Sport Store* 🆕%0A%0A👤 *Client :* ${firstName} ${lastName}%0A📞 *Téléphone :* ${phone}%0A📍 *Adresse :* ${address}%0A%0A🛍️ *Produits :*%0A${orderItemsHTML}%0A%0A💰 *Total :* ${total} TND%0A📅 *Date :* ${new Date().toLocaleString('fr-FR')}%0A%0A⚡ *Merci de contacter le client pour confirmer la commande*`;
+                    
+                    sendWhatsAppMessage(phone, customerMessage);
+                    sendWhatsAppMessage(STORE_SETTINGS.ownerWhatsApp, ownerMessage);
+                    success = true;
+                    
+                } else if (selectedDeliveryMethod === 'email') {
+                    // Envoi par email
+                    const formData = new FormData();
+                    formData.append('firstName', firstName);
+                    formData.append('lastName', lastName);
+                    formData.append('phone', phone);
+                    formData.append('email', email);
+                    formData.append('address', address);
+                    formData.append('orderTotal', total + ' TND');
+                    formData.append('orderItems', orderItems);
+                    formData.append('_subject', `Nouvelle commande de ${firstName} ${lastName}`);
+                    formData.append('_replyto', email);
+                    
+                    const emailBody = `
+                        📦 Nouvelle commande - Sport Store 📦
+                        
+                        👤 Informations client :
+                        - Prénom : ${firstName}
+                        - Nom : ${lastName}
+                        - Téléphone : ${phone}
+                        - Email : ${email}
+                        - Adresse : ${address}
+                        
+                        🛍️ Détails de la commande :
+                        ${orderItems}
+                        
+                        💰 Total : ${total} TND
+                        
+                        📅 Date : ${new Date().toLocaleString('fr-FR')}
+                        
+                        Merci pour votre confiance !
+                    `;
+                    formData.append('message', emailBody);
+                    
+                    const emailSent = await sendEmail(formData);
+                    
+                    if (emailSent) {
+                        showNotification('✓ Commande envoyée par email avec succès !');
+                        success = true;
+                    } else {
+                        showNotification('⚠️ Erreur lors de l\'envoi de l\'email, veuillez réessayer ou utiliser WhatsApp');
+                        success = false;
+                    }
+                }
+                
+                if (success) {
+                    showNotification(`✓ Commande envoyée avec succès via ${selectedDeliveryMethod === 'whatsapp' ? 'WhatsApp' : 'email'} !`);
+                    
+                    // Vider le panier
+                    cart = [];
+                    updateCart();
+                    
+                    // Fermer les modales
+                    closeCheckoutModal();
+                    if (selectedDeliveryMethod === 'whatsapp') {
+                        toggleCart();
+                    }
+                }
+                
+            } catch (error) {
+                console.error('Erreur:', error);
+                showNotification('Une erreur est survenue, veuillez réessayer');
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        // Ouvrir WhatsApp pour contact direct
+        function openWhatsApp() {
+            const message = encodeURIComponent(STORE_SETTINGS.welcomeMessage);
+            window.open(`https://wa.me/${STORE_SETTINGS.ownerWhatsApp}?text=${message}`, '_blank');
+        }
+
+        // Afficher une notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        // Initialisation
+        displayProducts();
+        
+        // Sélection par défaut
+        setTimeout(() => {
+            selectDeliveryMethod('whatsapp');
+        }, 100);
+    </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
